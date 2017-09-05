@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.Random;
 /**
  * A Hand is a collection of NumberTiles.  Tiles may be removed from 
  * the Hand and new tiles added to it
@@ -14,6 +14,7 @@ public class Hand
      */
     public Hand()
     {
+       
     }
     
     /**
