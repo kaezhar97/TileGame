@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Random;
+
 /**
  * A Hand is a collection of NumberTiles.  Tiles may be removed from 
  * the Hand and new tiles added to it
@@ -14,7 +14,13 @@ public class Hand
      */
     public Hand()
     {
-       
+       hand=new ArrayList<>();
+       NumberTile newTile;
+       for (int i=0;i<HAND_SIZE;i++)
+       {
+         newTile=new NumberTile();
+         hand.add(newTile);
+       }
     }
     
     /**
@@ -23,6 +29,14 @@ public class Hand
      */
     public Hand(Hand toBeCopied)
     {
+        ArrayList<NumberTile> duplicateHand = new ArrayList<>();
+        
+        for (int i=0;i<toBeCopied.getSize();i++)
+        {
+            duplicateHand.add(toBeCopied.get(i));
+        }
+        
+        
     }
     
     /**
@@ -33,7 +47,9 @@ public class Hand
     public NumberTile get(int index)
     {
        // temporary return statement so skeleton will compile and run
-       return null ;
+       ArrayList<NumberTile> handToShow=hand;
+        
+       return handToShow.get(index) ;
     }
     
     /**
@@ -42,8 +58,9 @@ public class Hand
      */
     public int getSize()
     {
+       
        // temporary return statement so skeleton will compile and run
-       return -999 ;
+       return hand.size() ;
     }
     
     /**
