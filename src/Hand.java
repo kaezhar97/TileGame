@@ -21,6 +21,7 @@ public class Hand
          newTile=new NumberTile();
          hand.add(newTile);
        }
+  
     }
     
     /**
@@ -29,14 +30,13 @@ public class Hand
      */
     public Hand(Hand toBeCopied)
     {
-        ArrayList<NumberTile> duplicateHand = new ArrayList<>();
+        hand = new ArrayList<>();
         
         for (int i=0;i<toBeCopied.getSize();i++)
         {
-            duplicateHand.add(toBeCopied.get(i));
+            hand.add(toBeCopied.get(i));
         }
-        
-        
+ 
     }
     
     /**

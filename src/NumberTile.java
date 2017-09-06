@@ -91,7 +91,7 @@ public class NumberTile
     public String toString() 
     {
        // temporary return statement so skeleton will compile and run
-        String tileLook="   " + getTop()+"\n"+getLeft()+"     "+getRight()+"\n   "+getBottom();
+        String tileLook="\n"+"   " + getTop()+"\n"+getLeft()+"     "+getRight()+"\n   "+getBottom()+"\n";
         return tileLook;
     }    
 } // end of NumberTile class

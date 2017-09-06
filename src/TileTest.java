@@ -13,23 +13,11 @@ public class TileTest {
         
        
        Hand newHand=new Hand();
-       for (int i=0;i<newHand.getSize();i++)
-       {
-        System.out.println(newHand.get(i));
-       }
+       System.out.println(newHand);
        
-       Hand duplicateHand=new Hand(newHand);
        
-      System.out.println("\n *****Duplicate hand*****");
-      
-      /**
        
-      for (int i=0;i<duplicateHand.getSize();i++)
-       {
-        System.out.println(duplicateHand.get(i));
-       }
-   
-       */
-      
+       Hand duplicate=new Hand(newHand);
+       System.out.println(duplicate);
     }
 }
