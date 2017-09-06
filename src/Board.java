@@ -13,6 +13,9 @@ public class Board
      */
     public Board()
     {
+        board=new ArrayList <>();
+        NumberTile initialTile = new NumberTile();
+        board.add(initialTile);
     }
     
     /**
