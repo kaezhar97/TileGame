@@ -26,7 +26,8 @@ public class Board
     public NumberTile getTile (int index)
     {
        // temporary return statement so skeleton will compile and run
-       return null;
+       
+       return board.get(index);
     }
     
     /**
