@@ -68,6 +68,9 @@ public class Hand
      */
     public void addTile()
     {
+        NumberTile newTile;
+        newTile=new NumberTile();
+        hand.add(newTile);
     }
     
     /**
