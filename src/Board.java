@@ -44,10 +44,11 @@ public class Board
     /**
      * Add a new tile to this Board at a specified index (position)
      * @param index the index (position) at which to insert the tile
-     * @param tile the tile to be inserted
+     * @param tile  the tile to be inserted
      */
     public void addTile(int index, NumberTile tile)
     {
+        board.add(index,tile);
     }
     
     /**
