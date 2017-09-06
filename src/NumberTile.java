@@ -9,7 +9,7 @@ import java.util.Random;
 public class NumberTile 
 {
     private ArrayList<Integer> tile ;
-    public static int TILE_SIZE = 4;
+   
     
     /**
      * Create a NumberTile object using 4 random ints in the range 1..9
@@ -21,7 +21,7 @@ public class NumberTile
        tile=new ArrayList<>();
        int nextNum=0;
        
-       for (int i=0;i<TILE_SIZE;i++)
+       for (int i=0;i<4;i++)
        {
         nextNum=generator.nextInt(10);  
         tile.add(nextNum);

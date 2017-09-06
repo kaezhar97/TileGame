@@ -18,9 +18,12 @@ public class TileGame
    public void play()
    {
 
-       while (player1.getSize()>0||player2.getSize()>0)
+       while (player1.getSize()>0&&player2.getSize()>0)
        {
-           
+         
+           makeMove(player1);
+           makeMove(player2);
+
        }
    }
 
@@ -29,7 +32,20 @@ public class TileGame
    private int getIndexForFit(NumberTile tile)
    {
       // temporary return statement so skeleton will compile and run
-      return -999;
+       for(int i = 0 ; i<gameBoard.getSize();i++)
+       {
+         if (tile.getLeft()==gameBoard.getTile(i).getLeft())
+           {
+            return 0;
+           }
+         else if (tile.getRight()==gameBoard.getTile(i).getRight())
+         {
+            return i; 
+         }
+         
+       }
+       
+       return -1;
    }
 
    // Make a move from a hand. If a tile in the hand fits on the board
@@ -38,51 +54,23 @@ public class TileGame
    // another tile to the hand  
    private void makeMove(Hand hand)
    {   
-       for (int i=0;i<player1.getSize();i++)
+       int rotationCounter=0;
+     if (rotationCounter<3) 
+     {
+       for (int j=0;j<hand.getSize();j++)
+       {
+           if (getIndexForFit(hand.get(j))!=-1)
            {
-               for (int j=0;j<gameBoard.getSize();j++)
-               {
-                if (player1.get(i).getLeft()==gameBoard.getTile(j).getLeft())
-                {
-                    gameBoard.addTile(0,player1.get(i));
-                    player1.removeTile(i);
-                    player1.addTile();
-                }
-                else if (player1.get(i).getRight()==gameBoard.getTile(j).getRight())
-                {
-                    gameBoard.addTile(j,player1.get(i));
-                    player1.removeTile(i);
-                    player1.addTile();
-                }
-                else
-                {
-                    //add rotate() method here once it's done
-                }
-               }
+            gameBoard.addTile(getIndexForFit(hand.get(j)),hand.get(j));
            }
-       
-       for (int i=0;i<player2.getSize();i++)
+           else
            {
-               for (int j=0;j<gameBoard.getSize();j++)
-               {
-                if (player2.get(i).getLeft()==gameBoard.getTile(j).getLeft())
-                {
-                    gameBoard.addTile(0,player2.get(i));
-                    player2.removeTile(i);
-                    player2.addTile();
-                }
-                else if (player2.get(i).getRight()==gameBoard.getTile(j).getRight())
-                {
-                    gameBoard.addTile(j,player2.get(i));
-                    player2.removeTile(i);
-                    player2.addTile();
-                }
-                else
-                {
-                    //add rotate() method here once it's done
-                }
-               }
+               
+             hand.get(j).rotate();
+             rotationCounter++;
            }
+       }
+     }
    }
 
    
@@ -92,7 +80,25 @@ public class TileGame
    // HINT: call the toString methods of the Hand and Board classes
    public String toString()
    {
+         boolean player1Wins=false;
+         boolean player2Wins=false;
+         boolean tie=false;
+       
+         if (player1.getSize()==0&&player2.getSize()!=0)
+           {
+               return "Player 1 wins!";
+           }
+           
+         else if(player1.getSize()!=0&&player2.getSize()==0)
+           {
+               return "Player 2 wins!";
+           }
+           
+         else
+           {
+               return "It's a tie!";
+           }
       // temporary return statement so skeleton will compile and run
-      return "Hi Mom!" ;
+      
    }
 } // end of TileGame class
