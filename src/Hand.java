@@ -80,6 +80,7 @@ public class Hand
      */
     public void removeTile(int index)
     {
+        hand.remove(index);
     }
     
     /**
@@ -90,7 +91,11 @@ public class Hand
     public boolean isEmpty()
     {
        // temporary return statement so skeleton will compile and run
-       return true ;
+        
+       boolean isEmpty;
+       isEmpty=hand.size()==0;
+
+       return isEmpty ;
     }
     
     /**
