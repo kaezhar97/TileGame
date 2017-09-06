@@ -35,7 +35,7 @@ The game ends when all tiles are removed from one (or both) player's hand(s).  I
 player's hand still contains tiles, then the player with the empty hand is the winner.  If both players’ hands are empty, then 
 the game ends in a tie
 
-III.  Specifications
+III.  Specifications
 
 Your program will consist of 5 classes
 
