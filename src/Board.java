@@ -37,7 +37,8 @@ public class Board
     public int getSize()
     {
        // temporary return statement so skeleton will compile and run
-       return -999 ;
+       
+       return board.size();
     }
     
     /**
