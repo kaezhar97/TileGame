@@ -47,9 +47,10 @@ public class Hand
     public NumberTile get(int index)
     {
        // temporary return statement so skeleton will compile and run
-       ArrayList<NumberTile> handToShow=hand;
+       NumberTile tileToShow;
+       tileToShow=hand.get(index);
         
-       return handToShow.get(index) ;
+       return tileToShow;
     }
     
     /**
