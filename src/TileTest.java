@@ -17,11 +17,14 @@ public class TileTest {
         startGame.play();
         System.out.println(startGame);
        
-        input = JOptionPane.showInputDialog("Would you like to see another game?\nType \"y\" or \"n\"") ;
+        input = JOptionPane.showInputDialog("Would you like to see another game?"
+                + "\nType \"y\" or \"n\"") ;
         
         while (!(input.toLowerCase().equals("y")||input.toLowerCase().equals("n")))
         {
-            input = JOptionPane.showInputDialog("Please enter a valid input\n\nWould you like to see another game?\nType \"y\" or \"n\"") ;
+            input = JOptionPane.showInputDialog("Please enter a valid input\n"
+                    + "\nWould you like to see another game?"
+                    + "\nType \"y\" or \"n\"") ;
         }
         
        }while(input.toLowerCase().equals("y"));
