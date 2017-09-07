@@ -6,6 +6,8 @@ public class TileGame
     private Hand player1 = new Hand();
 
     private Hand p1Copy = new Hand(player1);
+    
+    
 
     private Hand player2 = new Hand();
 
@@ -22,13 +24,19 @@ public class TileGame
     // Play the game
     public void play()
     {
+        System.out.println("Initial board\n"+gameBoard);
+        System.out.println("Initial Player 1 Hand\n"+player1);
+        System.out.println("Initial Player 2 Hand\n"+player2);
 
         while (player1.getSize() > 0 && player2.getSize() > 0)
         {
-
+            System.out.println("\nPlayer 1 is making a move...\n");
             makeMove(player1);
-
+            
+            System.out.println("\nPlayer 2 is making a move...\n");
             makeMove(player2);
+            
+            
 
         }
     }
@@ -37,47 +45,47 @@ public class TileGame
     // it will be inserted.  If the tile does not fit, returns -1
     private int getIndexForFit(NumberTile tile)
     {
+        //System.out.println("The index method has been called");
        
-
-        // temporary return statement so skeleton will compile and run
-        for (int i = 0; i < gameBoard.getSize(); i++)
-        { 
-            System.out.println("The game board: \n"+gameBoard);
-            System.out.println("The current tile: \n"+tile);
-            
-            System.out.println("the hand tile's left number:" + tile.getLeft());
-            System.out.println("the gameBoard tile's left number:" + gameBoard.getTile(i).getLeft());
-            
-            System.out.println("the hand tile's right number:" + tile.getRight());
-            System.out.println("the gameBoard tile's right number:" + gameBoard.getTile(i).getRight());
-
-            if (tile.getLeft() == gameBoard.getTile(i).getRight())
-            {
-                System.out.println("The tile goes to the right of the board tile");
-                return i+1;
-                
-              
-                
-            } 
-            
-            
-            
-            else if (tile.getRight() == gameBoard.getTile(i).getLeft())
-            {
-                System.out.println("The tile goes to the left of the board tile");
-                
-             
-                    return i;
-            }
-            
-            
-          
-            
-            
-
+        for (int i=0;i<gameBoard.getSize();i++)
+        {
+        
+         if (tile.getLeft()==gameBoard.getTile(i).getRight())
+         {
+             if (!(  (gameBoard.getTile(i)  ==  (gameBoard.getTile(gameBoard.getSize()-1))  )))
+             {
+                 if (tile.getRight()==gameBoard.getTile(i+1).getLeft())
+                 {
+                     System.out.println("Put it at position " +(i+1));
+                     return i+1;
+                 }
+             }
+             else
+             {
+                 System.out.println("Put it at position " +(i+1));
+                 return i+1;
+             }
+         }
+         
+         else if (tile.getRight()==gameBoard.getTile(i).getLeft())
+         {
+             if (i!=0)
+             {
+                 if (tile.getLeft()==gameBoard.getTile(i-1).getRight())
+                 {
+                     System.out.println("Put it at position " +(i));
+                     return i;
+                 }
+             }
+             else
+             {
+                 System.out.println("Put it at position " +(i));
+                 return i;
+             }
+         }
         }
-        System.out.println("The tile doesn't fit anywhere");
-        return -1;
+        return -1; 
+         
     }
 
     // Make a move from a hand. If a tile in the hand fits on the board
@@ -86,35 +94,48 @@ public class TileGame
     // another tile to the hand  
     private void makeMove(Hand hand)
     {
-        int rotationCounter = 0;
-
-        // if (rotationCounter<3) 
-        //  {
-        for (int j = 0; j < hand.getSize(); j++)
+        int j=0;
+        boolean hasPlayed=false;
+        
+        while (!hasPlayed)
         {
-            
-            int index=getIndexForFit(hand.get(j));
-            System.out.println("The tile must be placed at index: "+index);
-           
-            if (index != -1)
+        while(j<hand.getSize())
+        {
+            NumberTile currentTile=hand.get(j);
+            int rotateCounter=0;
+        
+            while((rotateCounter<3) && (!hasPlayed))
             {
+                System.out.println("Checking the currentTile: \n"+currentTile);
+                int index= getIndexForFit(currentTile);
+                if (index!=-1)
+                {
+                    System.out.println("Insert tile in index " + index);
+                    gameBoard.addTile(index, currentTile);
+                    hand.removeTile(j);
+                    hasPlayed=true;
+                    System.out.println("\nThis is the board after inserting the new tile\n"+gameBoard);
+                    System.out.println("\nThis is the player's hand after that last play\n"+hand);
+                    
+                }
+        
+                else
+                {
+                    System.out.println("Rotate the tile");
+                    currentTile.rotate();
+                    System.out.println("After rotating \n"+currentTile);
+                    rotateCounter++;
+                }
                 
-                System.out.println("The index is valid!");
-
-                gameBoard.addTile(index, hand.get(j));
-                hand.removeTile(j);
-
-                break;
             }
-            //else
-            // {
-
-            //   hand.get(j).rotate();
-            //   rotationCounter++;
-            //  }
+            j++;
         }
-
-        //}
+        if(!hasPlayed)
+           {
+            System.out.println("There are no tiles in the hand that fit in the board. Drawing new tile: \n");
+            hand.addTile();
+           }
+        }
     }
 
     // Get the results of the game as a humongous multi-line String containing
@@ -142,11 +163,11 @@ public class TileGame
         }
         // temporary return statement so skeleton will compile and run
 
-        finalString = "***** Player 1's Starting Hand *****\n" + p1Copy
-                + "***** Player 2's Starting Hand *****\n" + p2Copy
-                + "***** The Final Board *****\n" + gameBoard
-                + "***** Player 1's Final Hand *****\n" + player1
-                + "***** Player 2's Final Hand *****\n" + player2 +
+        finalString = "\n***** Player 1's Starting Hand *****\n" + p1Copy
+                + "\n***** Player 2's Starting Hand *****\n" + p2Copy
+                + "\n***** The Final Board *****\n" + gameBoard
+                + "\n***** Player 1's Final Hand *****\n" + player1
+                + "\n***** Player 2's Final Hand *****\n" + player2 +
                 "\n" + victoryDecision;
 
         return finalString;

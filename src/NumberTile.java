@@ -34,6 +34,9 @@ public class NumberTile
      */
     public void rotate() 
     { 
+        
+        int removedNumber=tile.remove(tile.size()-1);
+        tile.add(0,removedNumber);
     }
     
     /**
