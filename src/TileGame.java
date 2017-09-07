@@ -104,7 +104,7 @@ public class TileGame
             NumberTile currentTile=hand.get(j);
             int rotateCounter=0;
         
-            while((rotateCounter<3) && (!hasPlayed))
+            while((rotateCounter<=3) && (!hasPlayed))
             {
                 System.out.println("Checking the currentTile: \n"+currentTile);
                 int index= getIndexForFit(currentTile);
