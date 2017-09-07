@@ -100,7 +100,7 @@ public class TileGame
                  //This code is executed if there are no tiles after the current game board tile.
                  //This means that the tile can be safely inserted without having to check if it
                  //fits with any other tiles.
-                 System.out.println("Put it at position " +(i+1));
+                 
                  return i+1;
              }
          }
@@ -219,11 +219,11 @@ public class TileGame
        
         //The final message includes everything. Player 1 and 2's starting hands and the final board as well as the vicory decision
         finalString = "\n***** Player 1's Starting Hand *****\n" + p1Copy
-                + "\n***** Player 2's Starting Hand *****\n" + p2Copy
-                + "\n***** The Final Board *****\n" + gameBoard
-                + "\n***** Player 1's Final Hand *****\n" + player1
-                + "\n***** Player 2's Final Hand *****\n" + player2 +
-                "\n" + victoryDecision;
+                + "\n\n***** Player 2's Starting Hand *****\n" + p2Copy
+                + "\n\n***** The Final Board *****\n" + gameBoard
+                + "\n\n***** Player 1's Final Hand *****\n" + player1
+                + "\n\n***** Player 2's Final Hand *****\n" + player2 +
+                "\n\n" + victoryDecision;
 
         return finalString;
     }
