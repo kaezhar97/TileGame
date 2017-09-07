@@ -1,21 +1,31 @@
 
 import java.util.ArrayList;
 
+/*
+File: Board.java
+Purpose:
+    This class simulates board of number tiles. It starts with one number tile. 
+    More number tiles are added as the game progresses.
+*/
+
+
 /**
  * A Board is a collection of Number Tiles
+ * 
+ * @author Octavio Avila-Cardet
  */
 public class Board
 {
-    private ArrayList<NumberTile> board ;   
+    private ArrayList<NumberTile> board ;//The board is as a list containing NumberTile objects. This is the main variable used to represent the board
     
     /**
      * Create a new Board with one NumberTile
      */
     public Board()
     {
-        board=new ArrayList <>();
-        NumberTile initialTile = new NumberTile();
-        board.add(initialTile);
+        board=new ArrayList <>(); // Creates a new ArrayList and assignes it to the board. Now the board is an empty list.
+        NumberTile initialTile = new NumberTile(); // A new tile is created with random numbers.
+        board.add(initialTile); // The created tile is added to the board. This will be the starting board.
     }
     
     /**
@@ -25,9 +35,7 @@ public class Board
      */
     public NumberTile getTile (int index)
     {
-       // temporary return statement so skeleton will compile and run
-       
-       return board.get(index);
+       return board.get(index); 
     }
     
     /**
@@ -36,8 +44,6 @@ public class Board
      */
     public int getSize()
     {
-       // temporary return statement so skeleton will compile and run
-       
        return board.size();
     }
     
