@@ -2,6 +2,7 @@
  * Test class for tile game
  */
 
+import TileGameClasses.TileGame;
 import javax.swing.JOptionPane ;
 
 /**
@@ -36,7 +37,7 @@ public class TileTest {
         
        }while(input.toLowerCase().equals("y"));
        
-        System.out.println("**********************");
+        System.out.println("\n**********************");
         System.out.println("*THE GAMES HAVE ENDED*");
         System.out.println("**********************");
     }

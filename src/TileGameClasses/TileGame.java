@@ -1,3 +1,6 @@
+
+package TileGameClasses;
+
 /*
 File: TileGame.java
 Purpose:
